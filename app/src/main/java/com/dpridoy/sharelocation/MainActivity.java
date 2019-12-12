@@ -39,7 +39,7 @@ import io.paperdb.Paper;
 public class MainActivity extends AppCompatActivity {
 
     DatabaseReference user_information;
-    private static final int MY_REQUEST_CODE = 777;
+    private static final int MY_REQUEST_CODE = 7117;
     List<AuthUI.IdpConfig> providers;
 
     @Override
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 if(dataSnapshot.getValue()==null){  //If user is not exists
-                                    if(dataSnapshot.child(firebaseUser.getUid()).exists()){
+                                    if(!dataSnapshot.child(firebaseUser.getUid()).exists()){
                                         Common.loggedUser =new User(firebaseUser.getUid(),firebaseUser.getEmail());
                                         // Add to database
                                         user_information.child(Common.loggedUser.getUid())
